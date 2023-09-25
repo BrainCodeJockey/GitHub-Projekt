@@ -125,4 +125,27 @@ class MainTest {
         assertTrue(isCommon);
     }
 
+    @Test
+    void testContainsSpecialCharacterWithSpecialCharacters() {
+        // Given
+        String password = "password!";
+
+        // When
+        boolean result = Main.containsSpecialCharacter(password);
+
+        // Then
+        assertTrue(result);
+    }
+
+    @Test
+    void testContainsSpecialCharacterWithoutSpecialCharacters() {
+        // Given
+        String password = "password";
+
+        // When
+        boolean result = Main.containsSpecialCharacter(password);
+
+        // The
+        assertFalse(result);
+    }
 }
