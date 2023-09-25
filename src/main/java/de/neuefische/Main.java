@@ -1,10 +1,22 @@
 package de.neuefische;
 
+import java.util.Scanner;
+
 public class Main {
+
+
+
+/*    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+       System.out.println("Bitte geben sie ein Passwort ein:");
+        System.out.println(validatePassword(testPassword));
+    }*/
+
     public static void main(String[] args) {
-        String testPassword = "Alex12345678";
+        String testPassword = "Alex123456!";
         System.out.println(validatePassword(testPassword));
     }
+
 
     public static String validatePassword(String password) {
         if (password == null) {
@@ -13,8 +25,8 @@ public class Main {
         if (!isPasswordLengthValid(password) ||
                 !containsBothCases(password) ||
                 !containsDigits(password) ||
-                isCommonPassword(password)) {
-              //  !containsSpecialCharacter(password) {
+                isCommonPassword(password) ||
+                !containsSpecialCharacter(password)) {
             return "Das Passwort ist Ungültig!";
         }
         return "Das Passwort ist gültig!";
@@ -25,8 +37,9 @@ public class Main {
     }
 
     public static boolean containsDigits(String password) {
-        for (char digit : password.toCharArray()) {
-            if (Character.isDigit(digit)) {
+        char[] charactersInPassword = password.toCharArray();
+        for (char currentCharacter : charactersInPassword) {
+            if (Character.isDigit(currentCharacter)) {
                 return true;
             }
         }
@@ -63,9 +76,13 @@ public class Main {
         return false;
     }
 
-    public static boolean containsSpecialCharacter(String password)
-
-
-
-
+    public static boolean containsSpecialCharacter(String password) {
+        String specialChars  = "!@#$%^&*()-_=+[]{}|;:.<>?";
+        for (char symbol : password.toCharArray()) {
+            if (specialChars.contains(String.valueOf(symbol))) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
