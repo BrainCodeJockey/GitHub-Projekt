@@ -4,18 +4,17 @@ import java.util.Scanner;
 
 public class Main {
 
-
-
-/*    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-       System.out.println("Bitte geben sie ein Passwort ein:");
-        System.out.println(validatePassword(testPassword));
-    }*/
-
     public static void main(String[] args) {
-        String testPassword = "Alex123456!";
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Bitte geben sie ein Passwort ein:");
+        String testPassword = scanner.nextLine();
         System.out.println(validatePassword(testPassword));
     }
+
+   /* public static void main(String[] args) {
+        String testPassword = "Alex123456!";
+        System.out.println(validatePassword(testPassword));
+    }*/
 
 
     public static String validatePassword(String password) {
@@ -77,9 +76,8 @@ public class Main {
     }
 
     public static boolean containsSpecialCharacter(String password) {
-        String specialChars  = "!@#$%^&*()-_=+[]{}|;:.<>?";
         for (char symbol : password.toCharArray()) {
-            if (specialChars.contains(String.valueOf(symbol))) {
+            if (!Character.isLetterOrDigit(symbol) && !Character.isWhitespace(symbol)) {
                 return true;
             }
         }
